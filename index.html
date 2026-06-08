@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Personal website of Seungjun Lee, Computer Science and Engineering student at Seoul National University."
+      content="Personal website of Seungjun Lee, a Seoul National University student connecting computer science with PPE, technology policy, ethics, education, and society."
     />
     <title>Seungjun Lee | Personal Website</title>
     <style>
@@ -22,9 +22,13 @@
         --pearl: #fafafc;
         --dark-1: #272729;
         --dark-2: #2a2a2c;
+        --dark-3: #202326;
         --black: #000000;
         --hairline: #e0e0e0;
         --soft-line: #f0f0f0;
+        --soft-blue: #eaf3ff;
+        --soft-green: #eaf7f0;
+        --soft-gold: #fff6dc;
         --product-shadow: rgba(0, 0, 0, 0.18) 0 18px 44px 0;
       }
 
@@ -214,6 +218,25 @@
         gap: 12px;
       }
 
+      .theme-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0 0 28px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .theme-tags li {
+        padding: 8px 12px;
+        border: 1px solid var(--hairline);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--ink);
+        font-size: 14px;
+        line-height: 1.29;
+      }
+
       .button {
         display: inline-flex;
         align-items: center;
@@ -292,24 +315,35 @@
         color: #fff;
       }
 
+      .tile-dark-3 {
+        background: var(--dark-3);
+        color: #fff;
+      }
+
       .tile-dark .section-label,
       .tile-dark-2 .section-label,
+      .tile-dark-3 .section-label,
       .tile-dark .content-box p,
       .tile-dark-2 .content-box p,
+      .tile-dark-3 .content-box p,
       .tile-dark .activity p,
       .tile-dark-2 .activity p,
+      .tile-dark-3 .activity p,
       .tile-dark .contact-list,
-      .tile-dark-2 .contact-list {
+      .tile-dark-2 .contact-list,
+      .tile-dark-3 .contact-list {
         color: var(--muted-dark);
       }
 
       .tile-dark a,
-      .tile-dark-2 a {
+      .tile-dark-2 a,
+      .tile-dark-3 a {
         color: var(--primary-on-dark);
       }
 
       .activity-list,
-      .skill-list {
+      .skill-list,
+      .lens-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 24px;
@@ -317,7 +351,8 @@
       }
 
       .activity,
-      .skill-group {
+      .skill-group,
+      .lens-card {
         min-height: 100%;
         padding: 24px;
         border: 1px solid var(--hairline);
@@ -326,8 +361,31 @@
       }
 
       .activity p,
-      .skill-group p {
+      .skill-group p,
+      .lens-card p {
         margin-bottom: 0;
+      }
+
+      .lens-card:nth-child(1) {
+        background: var(--soft-blue);
+      }
+
+      .lens-card:nth-child(2) {
+        background: var(--soft-green);
+      }
+
+      .lens-card:nth-child(3) {
+        background: var(--soft-gold);
+      }
+
+      .activity small,
+      .skill-group small {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--primary);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.3;
       }
 
       .role-list {
@@ -369,6 +427,14 @@
         color: var(--ink);
         font-size: 14px;
         line-height: 1.29;
+      }
+
+      .tile-dark .course-list li,
+      .tile-dark-2 .course-list li,
+      .tile-dark-3 .course-list li {
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
       }
 
       .contact-list {
@@ -427,7 +493,8 @@
         .hero .tile-inner,
         .section-grid,
         .activity-list,
-        .skill-list {
+        .skill-list,
+        .lens-grid {
           grid-template-columns: 1fr;
         }
 
@@ -488,9 +555,10 @@
         <nav aria-label="Main navigation">
           <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li><a href="#lens">Lens</a></li>
+            <li><a href="#practice">Practice</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="#courses">Courses</a></li>
+            <li><a href="#learning">Learning</a></li>
             <li><a href="#cv">CV</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="#ai-usage">AI Usage</a></li>
@@ -503,13 +571,22 @@
       <section class="tile hero" id="top" aria-labelledby="intro-title">
         <div class="tile-inner">
           <div>
-            <p class="eyebrow">Computer Science and Engineering</p>
+            <p class="eyebrow">Computer Science | PPE | Technology and Society</p>
             <h1 id="intro-title">Seungjun Lee</h1>
             <p class="lead">
-              Student at Seoul National University interested in algorithms, web
-              development, artificial intelligence, digital systems, and the
-              relationship between technology and society.
+              I study computation as both an engineering discipline and a
+              social force: algorithms, AI, digital systems, philosophy, policy,
+              economics, education, and institutional leadership.
             </p>
+            <ul class="theme-tags" aria-label="Fields of interest">
+              <li>Algorithms</li>
+              <li>Artificial Intelligence</li>
+              <li>Digital Systems</li>
+              <li>Philosophy</li>
+              <li>Politics and Policy</li>
+              <li>Economics</li>
+              <li>Education</li>
+            </ul>
             <p class="meta-line">
               Seoul National University | Computer Science and Engineering
             </p>
@@ -539,18 +616,20 @@
         <div class="tile-inner section-grid">
           <p class="section-label">About Me</p>
           <div class="content-box">
-            <h2 id="about-title">About Me</h2>
+            <h2 id="about-title">Engineering with broader judgment.</h2>
             <p>
               I am a Computer Science and Engineering student at Seoul National
-              University. I am interested in algorithms, web development,
-              artificial intelligence, digital systems, and the relationship
-              between technology and society.
+              University. My technical interests include algorithms, web
+              development, artificial intelligence, digital systems, and the
+              design of reliable software.
             </p>
             <p>
-              I also enjoy thinking about how computer science connects with
-              philosophy, ethics, education, and culture. Through student
-              leadership, mentoring, and academic programs, I try to connect
-              technical learning with practical support for other students.
+              I also work across questions that sit outside a single department:
+              how technology should be governed, how incentives shape digital
+              platforms, how ethical reasoning changes product decisions, and
+              how education systems help people learn difficult ideas. This
+              PPE-style perspective helps me connect implementation details with
+              institutional, human, and social consequences.
             </p>
             <ul class="role-list" aria-label="Activities and experience">
               <li>
@@ -565,8 +644,8 @@
                 Mentor for freshman programs and university student activities
               </li>
               <li>
-                Active member of student communities and academic/career-related
-                programs
+                Active member of student communities and academic, career, and
+                interdisciplinary programs
               </li>
             </ul>
           </div>
@@ -575,35 +654,37 @@
 
       <section
         class="tile tile-parchment"
-        id="projects"
-        aria-labelledby="projects-title"
+        id="lens"
+        aria-labelledby="lens-title"
       >
         <div class="tile-inner">
           <div class="section-grid">
-            <p class="section-label">Projects or Activities</p>
+            <p class="section-label">Interdisciplinary Lens</p>
             <div>
-              <h2 id="projects-title">Projects or Activities</h2>
-              <div class="activity-list">
-                <article class="activity">
-                  <h3>Personal Website with GitHub Pages</h3>
+              <h2 id="lens-title">Connecting systems, people, and institutions.</h2>
+              <div class="lens-grid">
+                <article class="lens-card">
+                  <h3>Technical Systems</h3>
                   <p>
-                    Built a static personal website using HTML, CSS, Git, Codex,
-                    and GitHub Pages.
+                    I approach software through algorithms, data structures,
+                    AI, web interfaces, and digital systems, with attention to
+                    correctness, usability, and maintainability.
                   </p>
                 </article>
-                <article class="activity">
-                  <h3>Algorithm Problem Solving</h3>
+                <article class="lens-card">
+                  <h3>PPE Reasoning</h3>
                   <p>
-                    Practiced algorithmic problem solving with Python, including
-                    BFS, dynamic programming, priority queues, binary search, and
-                    implementation.
+                    I use philosophy, politics, and economics to examine
+                    values, governance, incentives, public choice, fairness, and
+                    the social meaning of technical decisions.
                   </p>
                 </article>
-                <article class="activity">
-                  <h3>Student Activity and Mentoring Projects</h3>
+                <article class="lens-card">
+                  <h3>Educational Leadership</h3>
                   <p>
-                    Participated in planning and supporting student events,
-                    mentoring programs, and academic/career-related activities.
+                    Through student leadership and mentoring, I translate
+                    abstract academic questions into programs, support systems,
+                    and practical help for other students.
                   </p>
                 </article>
               </div>
@@ -614,6 +695,53 @@
 
       <section
         class="tile tile-light"
+        id="practice"
+        aria-labelledby="practice-title"
+      >
+        <div class="tile-inner">
+          <div class="section-grid">
+            <p class="section-label">Projects and Activities</p>
+            <div>
+              <h2 id="practice-title">Where I put the range to work.</h2>
+              <div class="activity-list">
+                <article class="activity">
+                  <small>Build</small>
+                  <h3>Personal Website with GitHub Pages</h3>
+                  <p>
+                    Built and revised a static personal website using HTML, CSS,
+                    Git, Codex, and GitHub Pages to present technical work,
+                    public-facing identity, and reflective interests in one
+                    place.
+                  </p>
+                </article>
+                <article class="activity">
+                  <small>Reason</small>
+                  <h3>Algorithm Problem Solving</h3>
+                  <p>
+                    Practiced Python-based algorithmic problem solving,
+                    including BFS, dynamic programming, priority queues, binary
+                    search, and implementation, while developing structured
+                    reasoning under constraints.
+                  </p>
+                </article>
+                <article class="activity">
+                  <small>Lead</small>
+                  <h3>Student Activity and Mentoring Projects</h3>
+                  <p>
+                    Planned and supported student events, mentoring programs,
+                    and academic or career activities that required coordination,
+                    communication, institutional awareness, and care for student
+                    needs.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="tile tile-parchment"
         id="skills"
         aria-labelledby="skills-title"
       >
@@ -621,9 +749,10 @@
           <div class="section-grid">
             <p class="section-label">Skills and Interests</p>
             <div>
-              <h2 id="skills-title">Skills and Interests</h2>
+              <h2 id="skills-title">A capability map, not a single lane.</h2>
               <div class="skill-list">
                 <article class="skill-group">
+                  <small>Engineering</small>
                   <h3>Programming</h3>
                   <ul>
                     <li>Python</li>
@@ -632,6 +761,7 @@
                   </ul>
                 </article>
                 <article class="skill-group">
+                  <small>Making</small>
                   <h3>Web and Tools</h3>
                   <ul>
                     <li>HTML, CSS, Git, GitHub Pages</li>
@@ -639,11 +769,39 @@
                   </ul>
                 </article>
                 <article class="skill-group">
+                  <small>Judgment</small>
+                  <h3>PPE and Society</h3>
+                  <ul>
+                    <li>Ethics, philosophy, and technology governance</li>
+                    <li>Political institutions and public decision-making</li>
+                    <li>Economic incentives in platforms and policy</li>
+                  </ul>
+                </article>
+                <article class="skill-group">
+                  <small>Human Systems</small>
+                  <h3>Leadership</h3>
+                  <ul>
+                    <li>Student council leadership and representation</li>
+                    <li>Mentoring, facilitation, and peer support</li>
+                    <li>Program planning for academic and career activities</li>
+                  </ul>
+                </article>
+                <article class="skill-group">
+                  <small>Communication</small>
+                  <h3>Writing and Synthesis</h3>
+                  <ul>
+                    <li>Explaining technical ideas to mixed audiences</li>
+                    <li>Connecting abstract theory with practical cases</li>
+                    <li>Structured analysis across disciplines</li>
+                  </ul>
+                </article>
+                <article class="skill-group">
+                  <small>Research Direction</small>
                   <h3>Interests</h3>
                   <ul>
                     <li>Algorithms and artificial intelligence</li>
                     <li>Web development and human-computer interaction</li>
-                    <li>Technology and society</li>
+                    <li>Technology, society, education, and culture</li>
                   </ul>
                 </article>
               </div>
@@ -654,20 +812,30 @@
 
       <section
         class="tile tile-dark"
-        id="courses"
-        aria-labelledby="courses-title"
+        id="learning"
+        aria-labelledby="learning-title"
       >
         <div class="tile-inner section-grid">
-          <p class="section-label">Planned Courses</p>
+          <p class="section-label">Learning Path</p>
           <div class="content-box">
-            <h2 id="courses-title">Courses I Plan to Take</h2>
-            <ul class="course-list" aria-label="Courses I plan to take">
+            <h2 id="learning-title">Courses and questions I want to pursue.</h2>
+            <p>
+              My academic direction combines computer science depth with
+              humanities and social science breadth, especially where technical
+              systems affect public life.
+            </p>
+            <ul class="course-list" aria-label="Courses and topics I plan to study">
               <li>Data Structures</li>
               <li>Algorithms</li>
               <li>Computer Systems</li>
               <li>Artificial Intelligence</li>
               <li>Web Programming</li>
               <li>Software Engineering</li>
+              <li>Philosophy and Ethics</li>
+              <li>Political Theory</li>
+              <li>Economics</li>
+              <li>Technology Policy</li>
+              <li>Education and Society</li>
             </ul>
           </div>
         </div>
@@ -716,7 +884,7 @@
       </section>
 
       <section
-        class="tile tile-dark-2"
+        class="tile tile-dark-3"
         id="ai-usage"
         aria-labelledby="ai-title"
       >
@@ -725,7 +893,10 @@
           <div class="content-box">
             <h2 id="ai-title">AI Usage</h2>
             <p>Tool name: Codex</p>
-            <p>Prompt used to create this website:</p>
+            <p>Prompt used for the latest revision:</p>
+            <div class="prompt-box" aria-label="Prompt used with Codex">
+i edited my resume. there are many capabilities i have, not only in field of Computer, but also in field of indisciplinary sections such as ppe. make my site more affluent and be able to express my indisciplinary abilites.</div>
+            <p>Original prompt used to create this website:</p>
             <div class="prompt-box" aria-label="Prompt used with Codex">
 Build a static personal website in the repo root.
 
