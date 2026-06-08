@@ -1,9 +1,541 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>My GitHub Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Personal website of Seungjun Lee, Computer Science and Engineering student at Seoul National University."
+    />
+    <title>Seungjun Lee | Personal Website</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f4ee;
+        --surface: #ffffff;
+        --text: #1e2329;
+        --muted: #5d6773;
+        --line: #d8d3c8;
+        --accent: #0f766e;
+        --accent-dark: #134e4a;
+        --accent-soft: #e0f2f1;
+        --focus: #b45309;
+        --shadow: 0 18px 40px rgba(38, 45, 52, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      a {
+        color: var(--accent-dark);
+      }
+
+      a:hover {
+        color: var(--accent);
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 3px;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        z-index: 10;
+        transform: translateY(-150%);
+        background: var(--text);
+        color: #fff;
+        padding: 0.6rem 0.9rem;
+        border-radius: 0.25rem;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      header {
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0.9rem 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .site-name {
+        color: var(--text);
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 0.25rem 0.7rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav a {
+        display: inline-block;
+        padding: 0.45rem 0.55rem;
+        border-radius: 0.25rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+        text-decoration: none;
+      }
+
+      nav a:hover {
+        background: var(--accent-soft);
+        color: var(--accent-dark);
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem 1.25rem 3rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.65fr);
+        align-items: center;
+        gap: 2rem;
+        min-height: 62vh;
+        padding: 2.5rem 0;
+      }
+
+      .eyebrow {
+        margin: 0 0 0.65rem;
+        color: var(--accent-dark);
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1.2;
+      }
+
+      h1 {
+        max-width: 12ch;
+        font-size: clamp(2.4rem, 7vw, 4.8rem);
+      }
+
+      h2 {
+        margin-bottom: 1rem;
+        font-size: 1.75rem;
+      }
+
+      h3 {
+        font-size: 1.1rem;
+      }
+
+      .lead {
+        max-width: 650px;
+        margin: 1.2rem 0 1.5rem;
+        color: var(--muted);
+        font-size: 1.15rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0.7rem 1rem;
+        border: 1px solid var(--accent-dark);
+        border-radius: 0.25rem;
+        background: var(--accent-dark);
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .button.secondary {
+        background: transparent;
+        color: var(--accent-dark);
+      }
+
+      .button:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+
+      .profile-frame {
+        justify-self: center;
+        width: min(100%, 310px);
+      }
+
+      .profile-frame img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border: 8px solid var(--surface);
+        border-radius: 50%;
+        box-shadow: var(--shadow);
+      }
+
+      section {
+        padding: 3rem 0;
+        border-top: 1px solid var(--line);
+        scroll-margin-top: 1rem;
+      }
+
+      .section-grid {
+        display: grid;
+        grid-template-columns: minmax(170px, 0.35fr) minmax(0, 1fr);
+        gap: 2rem;
+      }
+
+      .section-label {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .content-box {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 0.5rem;
+        padding: 1.35rem;
+      }
+
+      .item-list {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .activity {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .activity:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .activity p,
+      .content-box p {
+        margin: 0.45rem 0 0;
+        color: var(--muted);
+      }
+
+      .course-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .course-list li {
+        padding: 0.45rem 0.65rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fbfaf7;
+        color: var(--text);
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 0.45rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .prompt-box {
+        margin-top: 1rem;
+        max-height: 18rem;
+        overflow: auto;
+        padding: 1rem;
+        border: 1px solid var(--line);
+        border-radius: 0.35rem;
+        background: #fbfaf7;
+        color: #343a40;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.9rem;
+        white-space: pre-wrap;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+      }
+
+      footer .footer-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1.5rem 1.25rem;
+      }
+
+      @media (max-width: 760px) {
+        .nav-wrap {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        nav ul {
+          justify-content: flex-start;
+        }
+
+        .hero,
+        .section-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 1.5rem;
+        }
+
+        .profile-frame {
+          justify-self: start;
+          width: min(72vw, 260px);
+        }
+
+        main {
+          padding-top: 1rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello GitHub Pages!</h1>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header>
+      <div class="nav-wrap">
+        <a class="site-name" href="#top" aria-label="Seungjun Lee home"
+          >Seungjun Lee</a
+        >
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#ai-usage">AI Usage</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="intro-title">
+        <div>
+          <p class="eyebrow">Computer Science and Engineering</p>
+          <h1 id="intro-title">Seungjun Lee</h1>
+          <p class="lead">
+            Student at Seoul National University interested in algorithms, web
+            development, artificial intelligence, and the relationship between
+            technology and society.
+          </p>
+          <div class="actions" aria-label="Primary links">
+            <a class="button" href="assets/cv.pdf">View CV</a>
+            <a class="button secondary" href="https://github.com/stevelee0817"
+              >GitHub</a
+            >
+          </div>
+        </div>
+        <div class="profile-frame">
+          <img
+            src="assets/profile.jpg"
+            alt="Portrait of Seungjun Lee"
+            width="827"
+            height="1063"
+          />
+        </div>
+      </section>
+
+      <section id="about" aria-labelledby="about-title">
+        <div class="section-grid">
+          <p class="section-label">About Me</p>
+          <div class="content-box">
+            <h2 id="about-title">About Me</h2>
+            <p>
+              I am a Computer Science and Engineering student at Seoul National
+              University. I am interested in algorithms, web development,
+              artificial intelligence, and the relationship between technology
+              and society.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="section-grid">
+          <p class="section-label">Projects or Activities</p>
+          <div class="content-box item-list">
+            <h2 id="projects-title">Projects or Activities</h2>
+            <article class="activity">
+              <h3>Personal Website with GitHub Pages</h3>
+              <p>
+                Built a static personal website using HTML, CSS, Git, Codex, and
+                GitHub Pages.
+              </p>
+            </article>
+            <article class="activity">
+              <h3>Algorithm Problem Solving</h3>
+              <p>
+                Practiced algorithmic problem solving with Python, including BFS,
+                dynamic programming, priority queues, and implementation.
+              </p>
+            </article>
+            <article class="activity">
+              <h3>Student Activities</h3>
+              <p>
+                Participated in student council and mentoring activities for
+                university students.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="courses" aria-labelledby="courses-title">
+        <div class="section-grid">
+          <p class="section-label">Planned Courses</p>
+          <div class="content-box">
+            <h2 id="courses-title">Courses I Plan to Take</h2>
+            <ul class="course-list" aria-label="Courses I plan to take">
+              <li>Data Structures</li>
+              <li>Algorithms</li>
+              <li>Computer Systems</li>
+              <li>Artificial Intelligence</li>
+              <li>Web Programming</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="cv" aria-labelledby="cv-title">
+        <div class="section-grid">
+          <p class="section-label">CV or Resume</p>
+          <div class="content-box">
+            <h2 id="cv-title">CV or Resume</h2>
+            <p>
+              My current CV is available as a PDF.
+              <a href="assets/cv.pdf">Open or download the CV</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <div class="section-grid">
+          <p class="section-label">Contact</p>
+          <div class="content-box">
+            <h2 id="contact-title">Contact</h2>
+            <ul class="contact-list">
+              <li>School: Seoul National University</li>
+              <li>Major: Computer Science and Engineering</li>
+              <li>
+                GitHub:
+                <a href="https://github.com/stevelee0817"
+                  >github.com/stevelee0817</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="ai-usage" aria-labelledby="ai-title">
+        <div class="section-grid">
+          <p class="section-label">AI Usage</p>
+          <div class="content-box">
+            <h2 id="ai-title">AI Usage</h2>
+            <p>Tool name: Codex</p>
+            <p>Prompt used to create this website:</p>
+            <div class="prompt-box" aria-label="Prompt used with Codex">
+Build a static personal website in the repo root.
+
+Use assets/profile.jpg or assets/profile.png as the profile image.
+Link assets/cv.pdf from the CV or Resume section.
+Keep the site simple and compatible with GitHub Pages.
+Do not use a backend or paid external API.
+Make the page responsive and accessible.
+
+Required sections:
+- Navigation menu linking to each section
+- About Me
+- Projects or Activities with at least two items
+- Contact
+- CV or Resume
+- Courses I plan to take
+- AI Usage section with the tool name Codex and this prompt
+
+My personal information:
+Name: Seungjun Lee
+Major: Computer Science and Engineering
+School: Seoul National University
+GitHub: https://github.com/stevelee0817
+
+About Me:
+I am a Computer Science and Engineering student at Seoul National University. I am interested in algorithms, web development, artificial intelligence, and the relationship between technology and society.
+
+Projects or Activities:
+1. Personal Website with GitHub Pages — Built a static personal website using HTML, CSS, Git, Codex, and GitHub Pages.
+2. Algorithm Problem Solving — Practiced algorithmic problem solving with Python, including BFS, dynamic programming, priority queues, and implementation.
+3. Student Activities — Participated in student council and mentoring activities for university students.
+
+Courses I plan to take:
+- Data Structures
+- Algorithms
+- Computer Systems
+- Artificial Intelligence
+- Web Programming
+
+After editing, explain what files you changed and how I can preview the site locally.</div
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-wrap">
+        <p>&copy; 2026 Seungjun Lee. Built with HTML and CSS for GitHub Pages.</p>
+      </div>
+    </footer>
   </body>
 </html>
