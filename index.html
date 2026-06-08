@@ -15,7 +15,7 @@
         --primary-focus: #0071e3;
         --primary-on-dark: #2997ff;
         --ink: #1d1d1f;
-        --muted: #7a7a7a;
+        --muted: #626266;
         --muted-dark: #cccccc;
         --canvas: #ffffff;
         --parchment: #f5f5f7;
@@ -25,7 +25,7 @@
         --black: #000000;
         --hairline: #e0e0e0;
         --soft-line: #f0f0f0;
-        --product-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0;
+        --product-shadow: rgba(0, 0, 0, 0.18) 0 18px 44px 0;
       }
 
       * {
@@ -202,6 +202,12 @@
         line-height: 1.14;
       }
 
+      .meta-line {
+        margin-bottom: 24px;
+        color: var(--muted);
+        font-size: 16px;
+      }
+
       .actions {
         display: flex;
         flex-wrap: wrap;
@@ -244,7 +250,7 @@
         width: 100%;
         aspect-ratio: 1;
         object-fit: cover;
-        border-radius: 18px;
+        border-radius: 8px;
         box-shadow: var(--product-shadow);
       }
 
@@ -262,6 +268,10 @@
       .activity p,
       .contact-list {
         color: var(--muted);
+      }
+
+      .content-box p:last-child {
+        margin-bottom: 0;
       }
 
       .tile-light {
@@ -298,23 +308,40 @@
         color: var(--primary-on-dark);
       }
 
-      .activity-list {
+      .activity-list,
+      .skill-list {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 24px;
         max-width: none;
       }
 
-      .activity {
+      .activity,
+      .skill-group {
         min-height: 100%;
         padding: 24px;
         border: 1px solid var(--hairline);
-        border-radius: 18px;
+        border-radius: 8px;
         background: var(--canvas);
       }
 
-      .activity p {
+      .activity p,
+      .skill-group p {
         margin-bottom: 0;
+      }
+
+      .role-list {
+        display: grid;
+        gap: 12px;
+        margin: 24px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .role-list li {
+        padding-left: 18px;
+        border-left: 3px solid var(--primary);
+        color: var(--muted);
       }
 
       .course-list {
@@ -324,6 +351,14 @@
         margin: 0;
         padding: 0;
         list-style: none;
+      }
+
+      .skill-group ul {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding-left: 20px;
+        color: var(--muted);
       }
 
       .course-list li {
@@ -391,7 +426,8 @@
 
         .hero .tile-inner,
         .section-grid,
-        .activity-list {
+        .activity-list,
+        .skill-list {
           grid-template-columns: 1fr;
         }
 
@@ -453,6 +489,7 @@
           <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
             <li><a href="#courses">Courses</a></li>
             <li><a href="#cv">CV</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -470,8 +507,11 @@
             <h1 id="intro-title">Seungjun Lee</h1>
             <p class="lead">
               Student at Seoul National University interested in algorithms, web
-              development, artificial intelligence, and the relationship between
-              technology and society.
+              development, artificial intelligence, digital systems, and the
+              relationship between technology and society.
+            </p>
+            <p class="meta-line">
+              Seoul National University | Computer Science and Engineering
             </p>
             <div class="actions" aria-label="Primary links">
               <a class="button" href="assets/cv.pdf">View CV</a>
@@ -503,9 +543,32 @@
             <p>
               I am a Computer Science and Engineering student at Seoul National
               University. I am interested in algorithms, web development,
-              artificial intelligence, and the relationship between technology
-              and society.
+              artificial intelligence, digital systems, and the relationship
+              between technology and society.
             </p>
+            <p>
+              I also enjoy thinking about how computer science connects with
+              philosophy, ethics, education, and culture. Through student
+              leadership, mentoring, and academic programs, I try to connect
+              technical learning with practical support for other students.
+            </p>
+            <ul class="role-list" aria-label="Activities and experience">
+              <li>
+                Student Council President, Department of Computer Science and
+                Engineering, Seoul National University
+              </li>
+              <li>
+                Education and Career Affairs, Student Executive Committee,
+                Seoul National University
+              </li>
+              <li>
+                Mentor for freshman programs and university student activities
+              </li>
+              <li>
+                Active member of student communities and academic/career-related
+                programs
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -532,15 +595,56 @@
                   <h3>Algorithm Problem Solving</h3>
                   <p>
                     Practiced algorithmic problem solving with Python, including
-                    BFS, dynamic programming, priority queues, and implementation.
+                    BFS, dynamic programming, priority queues, binary search, and
+                    implementation.
                   </p>
                 </article>
                 <article class="activity">
-                  <h3>Student Activities</h3>
+                  <h3>Student Activity and Mentoring Projects</h3>
                   <p>
-                    Participated in student council and mentoring activities for
-                    university students.
+                    Participated in planning and supporting student events,
+                    mentoring programs, and academic/career-related activities.
                   </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="tile tile-light"
+        id="skills"
+        aria-labelledby="skills-title"
+      >
+        <div class="tile-inner">
+          <div class="section-grid">
+            <p class="section-label">Skills and Interests</p>
+            <div>
+              <h2 id="skills-title">Skills and Interests</h2>
+              <div class="skill-list">
+                <article class="skill-group">
+                  <h3>Programming</h3>
+                  <ul>
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>C/C++</li>
+                  </ul>
+                </article>
+                <article class="skill-group">
+                  <h3>Web and Tools</h3>
+                  <ul>
+                    <li>HTML, CSS, Git, GitHub Pages</li>
+                    <li>GitHub, VS Code, Codex, Notion</li>
+                  </ul>
+                </article>
+                <article class="skill-group">
+                  <h3>Interests</h3>
+                  <ul>
+                    <li>Algorithms and artificial intelligence</li>
+                    <li>Web development and human-computer interaction</li>
+                    <li>Technology and society</li>
+                  </ul>
                 </article>
               </div>
             </div>
@@ -563,6 +667,7 @@
               <li>Computer Systems</li>
               <li>Artificial Intelligence</li>
               <li>Web Programming</li>
+              <li>Software Engineering</li>
             </ul>
           </div>
         </div>
@@ -593,6 +698,12 @@
             <ul class="contact-list">
               <li>School: Seoul National University</li>
               <li>Major: Computer Science and Engineering</li>
+              <li>
+                Email:
+                <a href="mailto:stevelee0817@snu.ac.kr"
+                  >stevelee0817@snu.ac.kr</a
+                >
+              </li>
               <li>
                 GitHub:
                 <a href="https://github.com/stevelee0817"
@@ -635,17 +746,30 @@ Required sections:
 
 My personal information:
 Name: Seungjun Lee
+Email: stevelee0817@snu.ac.kr
 Major: Computer Science and Engineering
 School: Seoul National University
 GitHub: https://github.com/stevelee0817
 
 About Me:
-I am a Computer Science and Engineering student at Seoul National University. I am interested in algorithms, web development, artificial intelligence, and the relationship between technology and society.
+I am a Computer Science and Engineering student at Seoul National University. I am interested in algorithms, web development, artificial intelligence, digital systems, and the relationship between technology and society. I also enjoy thinking about how computer science connects with philosophy, ethics, education, and culture.
+
+Activities and Experience:
+- Student Council President, Department of Computer Science and Engineering, Seoul National University
+- Education and Career Affairs, Student Executive Committee, Seoul National University
+- Mentor for freshman programs and university student activities
+- Active member of student communities and academic/career-related programs
 
 Projects or Activities:
 1. Personal Website with GitHub Pages — Built a static personal website using HTML, CSS, Git, Codex, and GitHub Pages.
-2. Algorithm Problem Solving — Practiced algorithmic problem solving with Python, including BFS, dynamic programming, priority queues, and implementation.
-3. Student Activities — Participated in student council and mentoring activities for university students.
+2. Algorithm Problem Solving — Practiced algorithmic problem solving with Python, including BFS, dynamic programming, priority queues, binary search, and implementation.
+3. Student Activity and Mentoring Projects — Participated in planning and supporting student events, mentoring programs, and academic/career-related activities.
+
+Skills:
+- Programming: Python, Java, C/C++
+- Web: HTML, CSS, Git, GitHub Pages
+- Tools: GitHub, VS Code, Codex, Notion
+- Interests: Algorithms, AI, Web Development, Human-Computer Interaction, Technology and Society
 
 Courses I plan to take:
 - Data Structures
@@ -653,9 +777,9 @@ Courses I plan to take:
 - Computer Systems
 - Artificial Intelligence
 - Web Programming
+- Software Engineering
 
-After editing, explain what files you changed and how I can preview the site locally.</div
-            >
+After editing, explain what files you changed and how I can preview the site locally.</div>
           </div>
         </div>
       </section>
